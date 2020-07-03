@@ -1,5 +1,14 @@
 # Concourse Docker
 
+----
+
+Schoolbox fork of https://github.com/concourse/concourse-docker.
+
+To minimise rebase conflicts in the event that we need to rebase this fork onto the upstream repo,
+please keep all Schoolbox edits of this file in this block.
+
+----
+
 This Docker image simply packages up the official `concourse` binary and
 configures it as the `ENTRYPOINT`, with a bunch of sane defaults for Docker.
 
