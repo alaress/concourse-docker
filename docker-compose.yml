@@ -42,6 +42,8 @@ services:
       CONCOURSE_MAIN_TEAM_GITHUB_ORG: alaress
       CONCOURSE_ADD_LOCAL_USER: test:test
       CONCOURSE_MAIN_TEAM_LOCAL_USER: test
+      CONCOURSE_GARDEN_DNS_PROXY_ENABLE: "false"
+      CONCOURSE_GARDEN_DNS_SERVER: ${DNS_1}
     logging:
       driver: "json-file"
       options:
@@ -62,6 +64,8 @@ services:
     stop_signal: SIGUSR2
     environment:
       CONCOURSE_TSA_HOST: web:2222
+      CONCOURSE_GARDEN_DNS_PROXY_ENABLE: "false"
+      CONCOURSE_GARDEN_DNS_SERVER: ${DNS_1}
     logging:
       driver: "json-file"
       options:
