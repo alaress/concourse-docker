@@ -2,6 +2,7 @@ version: '3'
 
 services:
   db:
+    restart: always
     image: postgres
     environment:
       POSTGRES_DB: concourse
@@ -14,6 +15,7 @@ services:
         max-size: "10m"
 
   web:
+    restart: always
     image: concourse/concourse
     command: web
     links: [db]
@@ -35,6 +37,7 @@ services:
         max-size: "10m"
 
   worker:
+    restart: always
     image: concourse/concourse
     command: worker
     privileged: true
