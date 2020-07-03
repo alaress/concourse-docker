@@ -12,7 +12,7 @@ services:
     environment:
       POSTGRES_DB: concourse
       POSTGRES_USER: concourse_user
-      POSTGRES_PASSWORD: concourse_pass
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PGDATA: /var/lib/postgresql/data
     logging:
       driver: "json-file"
@@ -32,15 +32,15 @@ services:
       - ${DNS_2}
     volumes: ["./keys/web:/concourse-keys"]
     environment:
-      CONCOURSE_EXTERNAL_URL: http://localhost:8080
+      CONCOURSE_EXTERNAL_URL: ${CONCOURSE_EXTERNAL_URL}
       CONCOURSE_POSTGRES_HOST: db
       CONCOURSE_POSTGRES_USER: concourse_user
-      CONCOURSE_POSTGRES_PASSWORD: concourse_pass
+      CONCOURSE_POSTGRES_PASSWORD: ${CONCOURSE_POSTGRES_PASSWORD}
       CONCOURSE_POSTGRES_DATABASE: concourse
       CONCOURSE_GITHUB_CLIENT_ID: ${CONCOURSE_GITHUB_CLIENT_ID}
       CONCOURSE_GITHUB_CLIENT_SECRET: ${CONCOURSE_GITHUB_CLIENT_SECRET}
       CONCOURSE_MAIN_TEAM_GITHUB_ORG: alaress
-      CONCOURSE_ADD_LOCAL_USER: test:test
+      CONCOURSE_ADD_LOCAL_USER: test:${CONCOURSE_ADD_LOCAL_USER_PASS}
       CONCOURSE_MAIN_TEAM_LOCAL_USER: test
       CONCOURSE_GARDEN_DNS_PROXY_ENABLE: "false"
       CONCOURSE_GARDEN_DNS_SERVER: ${DNS_1}
