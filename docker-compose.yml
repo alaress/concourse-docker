@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    restart: always
+    restart: ${RESTART_DB-always}
     image: postgres
     volumes: ["./database:/var/lib/postgresql/data"]
     ports: ["5432:5432"]
@@ -21,7 +21,7 @@ services:
         max-size: "10m"
 
   web:
-    restart: always
+    restart: ${RESTART_WEB-always}
     image: concourse/concourse
     command: web
     links: [db]
@@ -51,7 +51,7 @@ services:
         max-size: "10m"
 
   worker:
-    restart: always
+    restart: ${RESTART_WORKER-always}
     image: concourse/concourse
     command: worker
     privileged: true
